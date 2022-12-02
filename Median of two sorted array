@@ -1,0 +1,56 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> arr(nums1.size()+nums2.size());
+        int size=nums1.size()+nums2.size();
+        float median;
+        int count=0;
+        int j=0;
+        int i=0;
+        int k=0;
+    while(i<nums1.size() &&j<nums2.size())
+   {
+    if(nums1[i]>nums2[j])
+    {
+        arr[k]=nums2[j];
+        j++;
+        k++;
+        count++;
+    }
+    else{
+        arr[k]=nums1[i];
+        i++;
+        k++;
+        count++;
+    }
+   }
+    while (i<nums1.size())
+   {
+    arr[k]=nums1[i];
+    i++;
+    k++;
+    count++;
+   }
+    while(j<nums2.size())
+   {
+    arr[k]=nums2[j];
+    j++;
+    k++;
+    count++;
+   }
+
+        if(count%2==0)
+        {
+            median=float(arr[size/2 -1]+arr[(size/2)+1-1])/2;
+            
+            cout<<(arr[size/2 -1]+arr[(size/2)+1-1])/2;
+            return median;
+        }
+        else{
+        median=arr[(size+1)/2 -1];
+        return median;
+        }
+    
+       
+    }
+};
