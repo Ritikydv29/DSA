@@ -1,0 +1,53 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int jod=0;
+        int max=0;
+        int count=0;
+        int j=0;
+        int k=0;
+        int ind=0;
+        if(height.size()==1)
+        {
+            return 0;
+        }
+      
+      for(int i=0;i<height.size();i++)
+      {
+            if(height[i]>=max)
+            {
+                max=height[i];
+                ind=i;
+            }
+      }
+   
+      cout<<max<<endl;
+      cout<<ind<<endl;
+      for(int i=0;i<height.size() && i!=ind;i++)
+      {
+          if(height[i]>jod)
+          {
+              jod=height[i];
+          }
+          if(height[i]<jod)
+          {
+              count=count+jod-height[i];
+          }
+
+      }
+      jod=0;
+      for(int i=height.size()-1;i>=0 && i!=ind;i--)
+      {
+           if(height[i]>jod)
+           {
+               jod=height[i];
+           }
+           if(height[i]<jod)
+          {
+              j=j+jod-height[i];
+          }
+
+      }
+      return (count+j);
+    }
+};
