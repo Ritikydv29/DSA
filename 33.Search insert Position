@@ -1,0 +1,45 @@
+class Solution {
+   vector< int >BS(vector<int>nums,int target)
+    {
+        vector<int> arr(3);
+        int beg=0;
+        int end=nums.size()-1;
+        int mid=0;
+        int count=-1;
+          while(beg<=end)
+        {
+           mid=(beg+end)/2;
+            if(nums[mid]==target)
+            {
+                count=mid;
+                break;
+            }
+            else if(nums[mid]<target)
+            {
+              beg=mid+1;
+            }
+            else
+            {
+                 end=mid-1;
+               
+            }
+        }
+        arr[0]=count;
+        arr[1]=mid;
+        arr[2]=beg;
+        return arr;
+    }
+public:
+    int searchInsert(vector<int>& nums, int target) {
+       vector<int> z=BS(nums,target);
+       if(z[0]!=-1)
+       {
+           return z[0];
+       }
+       else
+       {
+           return z[2];
+       }
+
+    }
+};
