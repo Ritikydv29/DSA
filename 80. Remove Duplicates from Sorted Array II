@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int i=1;
+        int count=1;
+        int a=nums[0];
+        while(i<nums.size())
+        {
+         if(nums[i]==a)
+         {
+             count++;
+         }
+         else
+         {
+             a=nums[i];
+             count=1;
+         }
+         if(count>=3)
+         {  
+             cout<<"hey"<<endl;
+             nums.erase(nums.begin()+i);
+             i--;
+             count--;
+         }
+         i++;
+        }
+        return i;
+    }
+};
