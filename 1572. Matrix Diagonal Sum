@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int diagonalSum(vector<vector<int>>& mat) {
+        int psum=0;
+        int ssum=0;
+        string s;
+        unordered_map<string,int>m;
+        for(int i=0;i<mat.size();i++)
+        {
+            for(int j=0;j<mat[0].size();j++)
+            {
+                if(i==j)
+                {
+                  s+=i;
+                  s+=j;
+                  m[s]=1;
+                  psum+=mat[i][j];
+                }
+               else if(i+j==mat[0].size()-1)
+                {
+                    if(m.find(s)==m.end())
+                    {
+                    ssum+=mat[i][j];
+                    }
+                }
+                s.clear();
+            }
+        }
+        cout<<"psum :"<<psum<<endl;
+        cout<<"ssum :"<<ssum<<endl;
+        return psum+ssum;
+    }
+};
