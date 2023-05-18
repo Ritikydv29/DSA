@@ -1,0 +1,56 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int i=nums.size()-1;
+        int k=nums.size()-1;
+        int j=0;
+        int h=0;
+        if(nums.size()==1)
+        {
+            return;
+        }
+        else
+        {
+        while(i>0)
+        {
+            if(nums[i]>nums[i-1])
+            {
+                i--;
+                break;
+            }
+            else{
+                i--;
+                }
+            
+        }
+        cout<<i<<endl;
+        if(i==0 && nums[i]>nums[i+1])
+        {
+            cout<<"hi";
+            for(int z=0;z<nums.size()&&z<k;z++)
+                {
+                    swap(nums[z],nums[k]);
+                    k--;
+                }
+        }
+        else
+         {
+            for(int z=nums.size()-1;z>=0;z--)
+            {
+                if(nums[z]>nums[i])
+                {  
+                    swap(nums[z],nums[i]);
+                    // for(int l=0;l<nums.size();l++)
+                    // {
+                    //     cout<<" "<<nums[l];
+                    // }
+                    break;
+                }
+            }
+                sort(nums.begin()+i+1,nums.end());    
+            
+         }
+        }
+       
+    }
+};
