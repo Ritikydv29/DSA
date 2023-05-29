@@ -1,0 +1,25 @@
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int is=0;
+        int index=0;
+        double s=0.0;
+        double avg=-1000;
+        while(index<nums.size())
+        {
+            s+=nums[index];
+           if(index-is+1==k)
+           {   
+               if(s/k>avg)
+               {
+                   cout<<s;
+                   avg=s/k;
+               }
+               s=s-nums[is];
+               is++;
+           }
+           index++;
+        }
+        return avg;
+    }
+};
