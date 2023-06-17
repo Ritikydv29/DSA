@@ -1,0 +1,70 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int solve(TreeNode* root,vector<int> &ar)
+    {
+        int element=0;
+        queue<TreeNode *>q;
+        q.push(root);
+        q.push(NULL);
+        struct TreeNode* temp;
+        while(!q.empty())
+        {
+            temp=q.front();
+            q.pop();
+            if(temp==NULL)
+            {
+                ar.push_back(element);
+                element=0;
+                if(!q.empty())
+                {
+                    q.push(NULL);
+                }
+            }
+            else
+            {
+                element+=temp->val;
+                
+            if(temp->left)
+            {
+                q.push(temp->left);
+            }
+            if(temp->right)
+            {
+                q.push(temp->right);
+            }
+
+            }
+        }
+        return 0;
+    }
+
+    int maxLevelSum(TreeNode* root) {
+        vector<int>ar;
+        solve(root,ar);
+        int count=ar[0];
+        int level=1;
+        
+        for(int i=0;i<ar.size();i++)
+        {
+            if(ar[i]>count)
+            {
+                count=ar[i];
+                level=i+1;
+            }
+            
+        }
+        return level;
+
+    }
+};
