@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
+        vector<int>ans;
+        int var=0;
+        int sum=(grid.size()*grid.size())*(grid.size()*(grid.size())+1)/2;
+        cout<<sum<<endl;
+        unordered_set<int>mp;
+        for(int i=0;i<grid.size();i++){
+            for(int j=0;j<grid[0].size();j++){
+                if(mp.find(grid[i][j])==mp.end()){
+                    mp.insert(grid[i][j]);
+                    sum-=grid[i][j];
+                }
+                else var=grid[i][j];
+            }
+        }
+        ans.push_back(var);
+        ans.push_back(sum);
+        return ans;
+    }
+};
